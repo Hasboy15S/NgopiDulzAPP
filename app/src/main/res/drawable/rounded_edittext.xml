@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Warna background -->
+    <solid android:color="@android:color/white" />
+
+    <!-- Border (garis pinggir) -->
+    <stroke
+        android:width="1dp"
+        android:color="#B0BEC5" />
+
+    <!-- Radius sudut -->
+    <corners android:radius="30dp" />
+
+    <!-- Padding dalam -->
+
+</shape>

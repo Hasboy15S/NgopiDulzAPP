@@ -6,7 +6,7 @@
     android:padding="24dp"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
+    android:background="@drawable/login">
 
     <TextView
         android:text="Login"
@@ -17,32 +17,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/emailInput"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:background="@android:drawable/editbox_background_normal"
-        android:layout_marginBottom="12dp"/>
 
     <EditText
-        android:id="@+id/passwordInput"
-        android:hint="Password"
-        android:inputType="textPassword"
+        android:id="@+id/inputName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/rounded_edittext"
+        android:hint="Masukkan nama"
         android:padding="12dp"
-        android:background="@android:drawable/editbox_background_normal"
-        android:layout_marginBottom="20dp"/>
+        android:textColor="#000"
+        android:textColorHint="#757575" />
+
+    <EditText
+        android:id="@+id/inputName2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/rounded_edittext"
+        android:hint="Masukkan nama"
+        android:padding="12dp"
+        android:textColor="#000"
+        android:textColorHint="#757575" />
 
     <Button
         android:id="@+id/loginButton"
-        android:text="Login"
-        android:layout_width="match_parent"
+        android:layout_width="255dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"/>
+        android:layout_marginBottom="12dp"
+        android:text="Login" />
 
     <TextView
         android:id="@+id/registerLink"
