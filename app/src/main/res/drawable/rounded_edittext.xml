@@ -9,7 +9,7 @@
         android:color="#B0BEC5" />
 
     <!-- Radius sudut -->
-    <corners android:radius="30dp" />
+    <corners android:radius="50dp" />
 
     <!-- Padding dalam -->
 
