@@ -7,6 +7,35 @@
     android:background="@drawable/footer"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/titleshop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:gravity="center"
+        android:shadowColor="#80000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="4"
+        android:text="Our Product"
+        android:textColor="#B88B4C"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="153dp"
+        android:layout_height="2dp"
+        android:layout_below="@id/titleshop"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="8dp"
+        android:background="#C28800"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleshop" />
+
     <ImageButton
         android:id="@+id/btnkeranjang"
         android:layout_width="50dp"
@@ -70,14 +99,18 @@
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="INi Shop"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerShop"
+        android:layout_width="393dp"
+        android:layout_height="686dp"
+        android:layout_marginBottom="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.534" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
