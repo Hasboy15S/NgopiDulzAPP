@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
 import android.widget.ImageButton
+import android.widget.Toast
 import kotlin.jvm.java
 
 
@@ -24,8 +25,19 @@ class UserActivity : AppCompatActivity() {
         setupMenuItem(R.id.menu_bantuan, "Pusat Bantuan")
         setupMenuItem(R.id.menu_tentang, "Tentang Kami")
         setupMenuItem(R.id.menu_lokasi, "Lokasi Outlet")
-        setupMenuItem(R.id.menu_notif, "Pengaturan Notifikasi")
+        setupMenuItem(R.id.menu_logout, "Logout")
+        val btnLogout = findViewById<View>(R.id.menu_logout)
+        btnLogout.setOnClickListener{
+            val sp = getSharedPreferences("login_pref", MODE_PRIVATE)
+            sp.edit().clear().apply()   // ⬅️ hapus semua data login
 
+            Toast.makeText(this, "Berhasil logout", Toast.LENGTH_SHORT).show()
+
+            // restart kembali ke LoginActivity
+            val intent = Intent(this, LoginPage::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            startActivity(intent)
+        }
         val btnJadwal = findViewById<View>(R.id.menu_jadwal)
         btnJadwal.setOnClickListener{
             val intent = Intent(this, JadwalActivity::class.java)

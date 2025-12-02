@@ -6,7 +6,8 @@ import android.os.Bundle
 import android.widget.ImageButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.ngopidulz.app.adapter.ProductAdapter
+import com.ngopidulz.app.ProductAdapter
+
 
 class ShopActivity : AppCompatActivity() {
 
@@ -66,8 +67,8 @@ class ShopActivity : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerShop)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        val adapter = ProductAdapter(productList) { product ->
-            CartManager.addToCart(product)
+        val adapter = ProductAdapter(productList) {
+            // Kosong pun tidak apa-apa
         }
 
         recyclerView.adapter = adapter

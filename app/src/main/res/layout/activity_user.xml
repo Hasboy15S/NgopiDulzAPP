@@ -166,7 +166,7 @@
                 <include layout="@layout/item_menu_row" android:id="@+id/menu_bantuan"/>
                 <include layout="@layout/item_menu_row" android:id="@+id/menu_tentang"/>
                 <include layout="@layout/item_menu_row" android:id="@+id/menu_lokasi"/>
-                <include layout="@layout/item_menu_row" android:id="@+id/menu_notif"/>
+                <include layout="@layout/item_menu_row" android:id="@+id/menu_logout"/>
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

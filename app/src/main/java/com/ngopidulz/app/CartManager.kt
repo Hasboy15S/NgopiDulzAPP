@@ -34,12 +34,16 @@ object CartManager {
     }
 
     // Total harga semua produk (harga * qty)
+    fun getItems(): List<Product> {
+        return cartItems
+    }
+
     fun getTotal(): Int {
         return cartItems.sumOf { it.price * it.quantity }
     }
 
-    // Clear semua isi cart
     fun clear() {
         cartItems.clear()
     }
+
 }
