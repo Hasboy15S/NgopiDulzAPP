@@ -15,8 +15,8 @@ class CartAdapter(
         val img = v.findViewById<ImageView>(R.id.imgCart)
         val name = v.findViewById<TextView>(R.id.txtCartName)
         val price = v.findViewById<TextView>(R.id.txtCartPrice)
-        val btnMin = v.findViewById<Button>(R.id.btnMin)
-        val btnPlus = v.findViewById<Button>(R.id.btnPlus)
+        val btnMin = v.findViewById<ImageView>(R.id.btnMin)
+        val btnPlus = v.findViewById<ImageView  >(R.id.btnPlus)
         val qty = v.findViewById<TextView>(R.id.txtQty)
     }
 

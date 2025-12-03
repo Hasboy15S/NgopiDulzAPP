@@ -3,6 +3,7 @@ package com.ngopidulz.app
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,25 +23,50 @@ class KeranjangActivity : AppCompatActivity() {
         txtTotal = findViewById(R.id.txtTotal)
         btnCheckout = findViewById(R.id.btnCheckout)
 
-        // ambil referensi list dari CartManager (MutableList)
         val cart = CartManager.getCart()
 
-        adapter = CartAdapter(cart, onChange = { updateTotal() })
+        adapter = CartAdapter(cart) { updateTotal() }
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
         updateTotal()
 
         btnCheckout.setOnClickListener {
-            // aksi checkout singkat: clear cart, refresh adapter, update total
+
+            val orderItems = CartManager.getItems().map {
+                OrderItem(
+                    name = it.name,
+                    price = it.price,
+                    qty = it.quantity       // ← gunakan quantity dari CartManager
+                )
+            }
+
+            val totalHarga = CartManager.getTotal()
+
+            val newOrder = Order(
+                id = System.currentTimeMillis().toInt(),
+                items = orderItems,
+                total = totalHarga,
+                status = "Proses",
+                timestamp = System.currentTimeMillis()
+            )
+
+            // SIMPAN KE RIWAYAT
+            OrderStorage.saveOrder(this, newOrder)
+
             CartManager.clear()
-            adapter.notifyDataSetChanged()
-            updateTotal()
+
+            Toast.makeText(this, "Berhasil Checkout!", Toast.LENGTH_SHORT).show()
+
+            finish()
         }
+
     }
 
     private fun updateTotal() {
         val total = CartManager.getTotal()
         txtTotal.text = "Total: Rp $total"
     }
+
 }
+

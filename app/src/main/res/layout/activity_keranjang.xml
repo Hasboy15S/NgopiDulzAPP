@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="12dp">
+    android:padding="12dp"
+    android:background="@color/white">
 
     <TextView
         android:layout_width="match_parent"
@@ -15,25 +16,25 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerKeranjang"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="360dp"
+        android:layout_height="500dp"
         android:layout_weight="1"
-        android:paddingTop="8dp"/>
+        android:paddingTop="8dp" />
 
     <TextView
         android:id="@+id/txtTotal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="12dp"
         android:text="Total: Rp 0"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:padding="12dp"/>
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btnCheckout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Checkout"
+        android:text="Proses Pesanan"
         android:backgroundTint="#C28800"
         android:textColor="#fff"/>
 

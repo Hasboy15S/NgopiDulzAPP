@@ -7,12 +7,22 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class RiwayatActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_riwayat)
+        val recycler = findViewById<RecyclerView>(R.id.recyclerRiwayat)
+        recycler.layoutManager = LinearLayoutManager(this)
+
+        val list = OrderStorage.getOrders(this)
+
+        recycler.adapter = RiwayatAdapter(list) { updated ->
+            OrderStorage.updateOrder(this, updated)
+        }
         val btnHome = findViewById<ImageButton>(R.id.btnhome);
         val btnShop = findViewById<ImageButton>(R.id.btnshop);
         val btnKeranjang = findViewById<ImageButton>(R.id.btnkeranjang);

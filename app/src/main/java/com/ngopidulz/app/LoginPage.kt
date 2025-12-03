@@ -31,8 +31,19 @@ class LoginPage : AppCompatActivity() {
                 // Berpindah ke MainActivity
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
-                finish() // Supaya tidak bisa kembali ke login
-            } else {
+                finish()
+                return@setOnClickListener// Supaya tidak bisa kembali ke login
+            }
+            if (username == "admin" && password == "admin") {
+                val i = Intent(this, AdminActivity::class.java)
+                startActivity(i)
+                finish()
+                return@setOnClickListener
+            }
+            if (username == "" && password == ""){
+                Toast.makeText(this, "Anda belum menginput apapun", Toast.LENGTH_SHORT).show()
+            }
+            else {
                 Toast.makeText(this, "Nama atau password salah!", Toast.LENGTH_SHORT).show()
             }
         }

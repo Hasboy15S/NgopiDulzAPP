@@ -6,45 +6,62 @@ import android.os.Bundle
 import android.widget.ImageButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.ngopidulz.app.adapter.ProductAdapter
+import com.ngopidulz.app.ProductAdapter
+
 
 class ShopActivity : AppCompatActivity() {
 
     private val productList = listOf(
         Product(
-            "Kopi Hitam",
-            "Kopi hitam pahit dengan aroma kuat khas arabika",
-            12000,
-            R.drawable.keranjang,
+            "Americano",
+            "Espresso yang dicampur air panas menghasilkan rasa kopi yang ringan dan clean.",
+            15000,
+            R.drawable.amer,
             id = 1
         ),
         Product(
-            "Cappuccino",
-            "Campuran espresso, susu, dan foam lembut",
+            "Latte",
+            "Perpaduan espresso dan susu steamed creamy dengan sedikit foam lembut.",
             18000,
-            R.drawable.keranjang,
+            R.drawable.latte,
             id = 2
         ),
         Product(
-            "Es Kopi Susu",
-            "Kopi susu dengan rasa creamy dan manis seimbang",
+            "Kopi Gula Aren",
+            "Kopi susu creamy dengan campuran gula aren premium yang manis dan wangi.",
             20000,
-            R.drawable.keranjang,
+            R.drawable.guren,
             id = 3
         ),
         Product(
-            "Americano",
-            "Espresso yang dicampur air menghasilkan rasa ringan",
-            15000,
-            R.drawable.keranjang,
+            "Cheese Cake",
+            "Cheese cake lembut dengan tekstur creamy dan rasa keju yang nikmat.",
+            25000,
+            R.drawable.cake,
             id = 4
+        ),
+        Product(
+            "Kentang Goreng",
+            "Kentang goreng renyah di luar lembut di dalam, cocok jadi teman ngopi.",
+            15000,
+            R.drawable.cake,
+            id = 5
+        ),
+        Product(
+            "Croissant",
+            "Croissant lembut berlapis, wangi butter, cocok disantap saat hangat.",
+            17000,
+            R.drawable.crois,
+            id = 6
         )
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop)
-
+        if (ProductStorage.isEmpty(this)) {
+            ProductStorage.saveProducts(this, productList)
+        }
         // === BOTTOM MENU ===
         findViewById<ImageButton>(R.id.btnhome).setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
@@ -66,9 +83,9 @@ class ShopActivity : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerShop)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        val adapter = ProductAdapter(productList) { product ->
-            CartManager.addToCart(product)
-        }
+        val adapter = ProductAdapter(productList) {}
+
+
 
         recyclerView.adapter = adapter
     }

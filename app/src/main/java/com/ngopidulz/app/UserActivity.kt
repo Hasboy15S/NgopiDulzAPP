@@ -1,18 +1,48 @@
 package com.ngopidulz.app
 
-import android.content.Intent
+
 import android.os.Bundle
-import android.widget.ImageButton
-import androidx.activity.enableEdgeToEdge
+import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import android.content.Intent
+import android.widget.ImageButton
+import android.widget.Toast
+import kotlin.jvm.java
+
 
 class UserActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_user)
+
+        setupMenuItem(R.id.menu_jadwal, "Jadwal Shift")
+        setupMenuItem(R.id.menu_detail, "Detail Akun")
+        setupMenuItem(R.id.menu_transaksi, "Riwayat Transaksi")
+        setupMenuItem(R.id.menu_pesanan, "Riwayat Pemesanan")
+
+        // --- Bagian 2: Lainnya ---
+        setupMenuItem(R.id.menu_bantuan, "Pusat Bantuan")
+        setupMenuItem(R.id.menu_tentang, "Tentang Kami")
+        setupMenuItem(R.id.menu_lokasi, "Lokasi Outlet")
+        setupMenuItem(R.id.menu_logout, "Logout")
+        val btnLogout = findViewById<View>(R.id.menu_logout)
+        btnLogout.setOnClickListener{
+            val sp = getSharedPreferences("login_pref", MODE_PRIVATE)
+            sp.edit().clear().apply()   // ⬅️ hapus semua data login
+
+            Toast.makeText(this, "Berhasil logout", Toast.LENGTH_SHORT).show()
+
+            // restart kembali ke LoginActivity
+            val intent = Intent(this, LoginPage::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            startActivity(intent)
+        }
+        val btnJadwal = findViewById<View>(R.id.menu_jadwal)
+        btnJadwal.setOnClickListener{
+            val intent = Intent(this, JadwalActivity::class.java)
+            startActivity(intent)
+        }
         val btnHome = findViewById<ImageButton>(R.id.btnhome);
         val btnShop = findViewById<ImageButton>(R.id.btnshop);
         val btnKeranjang = findViewById<ImageButton>(R.id.btnkeranjang);
@@ -38,5 +68,19 @@ class UserActivity : AppCompatActivity() {
             val intent = Intent(this, UserActivity::class.java)
             startActivity(intent)
         }
+
+    }
+
+    // Fungsi ajaib untuk mengubah teks menu
+    private fun setupMenuItem(viewId: Int, text: String) {
+        val includedView = findViewById<View>(viewId)
+        val textView = includedView.findViewById<TextView>(R.id.menu_text)
+        textView.text = text
+
+        includedView.setOnClickListener{
+            android.widget.Toast.makeText(this, "Kamu menekan menu: $text", android.widget.Toast.LENGTH_SHORT).show()
+        }
+
+        // Nanti kalau mau menu bisa diklik, tambahkan kode di sini
     }
 }

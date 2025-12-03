@@ -5,18 +5,22 @@
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     card_view:cardCornerRadius="16dp"
-    card_view:cardElevation="6dp">
+    card_view:cardElevation="6dp"
+    android:background="@color/white">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="12dp">
+        android:padding="12dp"
+        android:background="@color/white">
 
         <ImageView
             android:id="@+id/imgCart"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            android:background="@drawable/imgrounded"
+            android:clipToOutline="true"/>
 
         <TextView
             android:id="@+id/txtCartName"
@@ -38,32 +42,33 @@
             android:text="Rp 0"
             android:textColor="#444" />
 
-        <Button
+        <ImageView
             android:id="@+id/btnMin"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentEnd="true"
-            android:text="-"
-            android:backgroundTint="#C28800"
-            android:textColor="#fff"/>
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/circle"
+            android:padding="5dp"
+            android:src="@drawable/min"
+            android:visibility="visible"
+            android:layout_alignParentEnd="true"/>
 
-        <TextView
+        <EditText
             android:id="@+id/txtQty"
             android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_toStartOf="@id/btnMin"
+            android:layout_height="25dp"
+            android:background="@drawable/qty_box"
             android:gravity="center"
-            android:text="1"
-            android:textStyle="bold" />
+            android:textSize="20sp"
+            android:layout_toStartOf="@id/btnMin"/>
 
-        <Button
+        <ImageView
             android:id="@+id/btnPlus"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_toStartOf="@id/txtQty"
-            android:text="+"
-            android:backgroundTint="#C28800"
-            android:textColor="#fff"/>
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/circle"
+            android:padding="5dp"
+            android:src="@drawable/plus"
+            android:layout_toStartOf="@id/txtQty"/>
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

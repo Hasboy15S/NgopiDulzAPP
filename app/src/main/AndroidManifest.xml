@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NgopiDulz">
         <activity
+            android:name=".AdminProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".JadwalActivity"
+            android:exported="false" />
+        <activity
             android:name=".ShopActivity"
             android:exported="false" />
         <activity
